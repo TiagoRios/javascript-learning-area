@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="jogo-advinhar-numero.css">
+  <title>Jogo advinhar número</title>
+</head>
+
+<body>
+  <h1>Advinhe o número</h1>
+
+  <p>Número aleatória de 1 a 100. Tente advinhar em no máximo 10 palpites.</p>
+
+  <div class="form">
+    <label for="guessField">Entre com palpite: </label>
+    <input type="text" id="guessField" class="guessField">
+    <input type="submit" value="Enviar palpite" class="guessSubmit">
+  </div>
+
+  <div class="resultParas">
+    <p class="guesses"></p>
+    <p class="lastResult"></p>
+    <p class="lowOrHi"></p>
+  </div>
+
+  <script src="jogo-advinhar-numero.js" defer></script>
+</body>
+
+</html>
