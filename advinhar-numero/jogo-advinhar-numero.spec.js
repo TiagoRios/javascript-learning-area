@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
- 
-const { TextDecoder, TextEncoder} = require('util');
+
+const { TextDecoder, TextEncoder } = require('util');
 global.TextDecoder = TextDecoder;
 global.TextEncoder = TextEncoder;
 
@@ -29,14 +29,16 @@ let jsomHtmlPequenoSimples = new JSDOM(`
 
 //Demora muito, porque precisa carregar = HTML, CSS, JS. e serializar o retorno.
 beforeAll(async () => {
-    jstring = await JSDOM.fromFile('advinhar-numero/jogo-advinhar-numero.html').then(x => {return x.serialize();});
-    jsdomFileHtml = new JSDOM(jstring).window;
+  // TODO: o string é hardcode. Qualquer renomeação quebra o texte.
+  // Tentar encontrar uma maneira melhor.
+  jstring = await JSDOM.fromFile('advinhar-numero/jogo-advinhar-numero.html').then(x => { return x.serialize(); });
+  jsdomFileHtml = new JSDOM(jstring).window;
 })
 
 test('verifica quant. filhos em body - usa string html grande', () => {
-    expect(jsomHtmlPequenoSimples.document.body.children.length).toBe(5);
+  expect(jsomHtmlPequenoSimples.document.body.children.length).toBe(5);
 });
 
 test('verifica quant. filhos em body - promises com JSDOM.FromFile', () => {
-    expect(jsdomFileHtml.document.body.children.length).toBe(5);
+  expect(jsdomFileHtml.document.body.children.length).toBe(5);
 });
